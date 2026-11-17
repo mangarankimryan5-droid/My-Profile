@@ -1,138 +1,281 @@
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: #000;
-    color: #fff;
-    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
-    min-height: 100vh;
-  }
-  
-  .background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-  }
-  
-  /* dark layer so text is readable over any video */
-  .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: -1;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+
+  background-color: #000;
+  color: #fff;
+
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+
+
+.background-video {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  z-index: -2;
+  pointer-events: none;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+.page {
+  width: 100%;
+  max-width: 560px;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  margin: 0 auto;
+
+  padding: clamp(24px, 6vh, 60px) clamp(16px, 5vw, 28px) 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: clamp(20px, 4vh, 32px);
+}
+
+.header {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.contact {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  letter-spacing: clamp(0.12em, 1vw, 0.3em);
+  font-weight: 600;
+
+  overflow-wrap: anywhere;
+}
+
+
+.profile-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+  text-align: center;
+}
+
+.profile-pic {
+  width: clamp(130px, 25vw, 200px);
+  height: clamp(130px, 25vw, 200px);
+
+  max-width: 100%;
+
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 3px solid rgba(255, 255, 255, 0.8);
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.name {
+  max-width: 100%;
+
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  margin-top: 8px;
+
+  overflow-wrap: anywhere;
+}
+
+.role {
+  max-width: 100%;
+
+  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+}
+
+.links {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.card {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: clamp(13px, 3vw, 16px) clamp(14px, 4vw, 20px);
+
+  color: #fff;
+  text-decoration: none;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.label {
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.value {
+  min-width: 0;
+
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  text-align: right;
+}
+
+.footer {
+  width: 100%;
+
+  margin-top: 8px;
+
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+
+  text-align: center;
+}
+
+
+@media (max-width: 420px) {
+
   .page {
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 48px 20px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 28px;
+    padding-top: 28px;
+    gap: 22px;
   }
-  
-  .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .contact {
-    font-size: 2rem;
-    letter-spacing: 0.3em;
-    font-weight: 600;
-  }
-  
-  .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    text-align: center;
-  }
-  
-  .profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-  }
-  
-  .name {
-    font-size: 1.5rem;
-    margin-top: 8px;
-  }
-  
-  .role {
-    color: rgba(255, 255, 255, 0.75);
-  }
-  
-  .links {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
+
   .card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    color: #fff;
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 14px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: transform 0.2s, background 0.2s;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 6px;
   }
-  
+
+  .value {
+    width: 100%;
+    text-align: left;
+  }
+
+}
+
+@media (min-width: 600px) {
+
+  .page {
+    max-width: 600px;
+    padding-top: 55px;
+  }
+
+  .links {
+    gap: 15px;
+  }
+
+  .card {
+    padding: 18px 22px;
+  }
+
+}
+
+
+@media (min-width: 900px) {
+
+  .page {
+    max-width: 620px;
+    padding-top: 60px;
+  }
+
   .card:hover {
     transform: translateY(-3px);
     background: rgba(255, 255, 255, 0.2);
   }
-  
-  .label {
-    font-weight: 600;
+
+}
+
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+  .page {
+    min-height: 100vh;
+    gap: 16px;
+    padding-top: 20px;
   }
-  
-  .value {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.95rem;
-    word-break: break-all;
-    text-align: right;
+
+  .profile-pic {
+    width: 110px;
+    height: 110px;
   }
-  
-  .footer {
-    margin-top: 8px;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
   }
-  
-  @media (max-width: 420px) {
-    .profile-pic {
-      width: 160px;
-      height: 160px;
-    }
-    .card {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .value {
-      text-align: left;
-    }
+
+  .card {
+    transition: none;
   }
+
+}
+
+@media (hover: none) {
+
+  .card:hover {
+    transform: none;
+  }
+
+}
